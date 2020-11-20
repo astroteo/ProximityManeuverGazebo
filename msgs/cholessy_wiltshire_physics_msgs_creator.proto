@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+/// \ingroup gazebo_msgs
+/// \interface Hydra
+/// \brief Message that contains information about a Hydra Razer controller
+
+package cholessy_wiltshire_msgs.msgs;
+
+import "vector2d.proto";
+import "pose.proto";
+message CholessyWiltshire
+{
+  required gazebo.msgs.Vector3d   velocity  = 1;
+  required gazebo.msgs.Vector3d   acceleration = 2;
+  required double                 time = 3;
+  optional string                 filename   = 4 [default = ""];
+  optional int32                  threshold  = 5 [default = 255];
+}

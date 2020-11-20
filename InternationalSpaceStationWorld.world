@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+
+  <world name="cholessy-wiltshire-default-world">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+<!-- ############################################################ Rendering-->
+<gui>
+     <camera name="default_camera_view">
+       <pose>10 0 10 -1.57 1.57 0</pose>
+     </camera>
+</gui>
+<!-- ############################################################ BASE physics -->
+<gravity>0 0 0</gravity>
+<magnetic_field>0 0 0</magnetic_field>
+<physics name='default_physics' type='ode'>
+  <ode>
+        <solver>
+          <type>world</type>
+        </solver>
+        <constraints>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <!--
+      <max_step_size>0.001</max_step_size>
+    -->
+</physics>
+<!-- ############################################################ ISS model -->
+
+
+<!-- ############################################################ Satellite model -->
+  <model name="robosat">
+    <pose> 20 20 0  0.028249999999999997 -0.11299999999999999 0</pose>
+       <link name="base_link">
+
+          <gravity>0</gravity>
+         <inertial>
+          <mass>2</mass>
+        </inertial>
+         <collision name="collision">
+           <geometry>
+             <box>
+               <size>.5 .5 .5</size>
+             </box>
+           </geometry>
+         </collision>
+
+         <visual name="visual">
+           <geometry>
+             <box>
+               <size>.5 .5 .5</size>
+             </box>
+           </geometry>
+         </visual>
+       </link>
+
+      <!-- ################################################### Physics plugin
+      <plugin name="model_cholessy_wiltshire" filename="libcholessy_wiltshire_object.so"/>
+      TO BE SUBSITUTED TO BE SUBSITUTED TO BE SUBSITUTED TO BE SUBSITUTED-->
+  </model>
+<!-- Plugin with neutral physiscs-->
+<plugin name="cholessy_wiltshire_world" filename="libcholessy_wiltshire.so"/>
+
+</world>
+</sdf>
