@@ -8,7 +8,7 @@
 #include "gazebo/transport/TransportTypes.hh"
 #include "gazebo/common/Plugin.hh"
 #include "gazebo/common/Events.hh"
-
+#include "cholessy_wiltshire_physics_msgs_creator.pb.h"
 namespace gazebo
 {
   class GZ_PLUGIN_VISIBLE CholessyWiltshirePlugin : public ModelPlugin

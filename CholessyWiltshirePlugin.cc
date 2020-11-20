@@ -5,24 +5,23 @@
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include "gazebo/transport/transport.hh"
-#include "plugins/HydraDemoPlugin.hh"
 
 using namespace gazebo;
 
 GZ_REGISTER_MODEL_PLUGIN(CholessyWiltshirePlugin)
 
 /////////////////////////////////////////////////
-HydraDemoPlugin::CholessyWiltshirePlugin()
+CholessyWiltshirePlugin::CholessyWiltshirePlugin()
 {
 }
 
 /////////////////////////////////////////////////
-HydraDemoPlugin::~CholessyWiltshirePlugin()
+CholessyWiltshirePlugin::~CholessyWiltshirePlugin()
 {
 }
 
 /////////////////////////////////////////////////
-void HydraDemoPlugin::OnCholessyWiltshire(ConstCholessyWiltshirePtr &_msg)
+void CholessyWiltshirePlugin::OnCholessyWiltshire(ConstCholessyWiltshirePtr &_msg)
 {
   std::lock_guard<std::mutex> lock(this->msgMutex);
   this->cholessyWiltshireMsgPtr = _msg;
@@ -54,8 +53,9 @@ void CholessyWiltshirePlugin::Update()
 
   // Move the model.
   this->model->SetLinearVel(
-      ignition::math::Vector3d(-joyX * 0.2, joyY * 0.2, 0));
+                              ignition::math::Vector3d( 0.2, 0.2, 0));
+                              
 
   // Remove the message that has been processed.
-  this->hydraMsgPtr.reset();
+  this->cholessyWiltshireMsgPtr.reset();
 }

@@ -10,8 +10,6 @@
 #include "gazebo/transport/transport.hh"
 #include "gazebo/gazebo.hh"
 
-//Support classes
-#include "OrbitingObject.hh"
 
 #define ISS_
 

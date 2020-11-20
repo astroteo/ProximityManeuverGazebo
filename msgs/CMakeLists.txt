@@ -10,9 +10,12 @@ endforeach()
 set (msgs
   cholessy_wiltshire_physics_msgs_creator.proto
   ${PROTOBUF_IMPORT_DIRS}/vector2d.proto
+  ${PROTOBUF_IMPORT_DIRS}/vector3d.proto
   ${PROTOBUF_IMPORT_DIRS}/header.proto
   ${PROTOBUF_IMPORT_DIRS}/time.proto
 )
+
 PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${msgs})
+
 add_library(cholessy_wiltshire_physics_msgs_creator SHARED ${PROTO_SRCS})
 target_link_libraries(cholessy_wiltshire_physics_msgs_creator ${PROTOBUF_LIBRARY})
