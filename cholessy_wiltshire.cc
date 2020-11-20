@@ -11,7 +11,7 @@
 #include "gazebo/gazebo.hh"
 
 
-#define ISS_
+//#define ISS_
 
 
 using namespace ignition;

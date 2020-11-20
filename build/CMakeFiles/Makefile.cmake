@@ -119,5 +119,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cholessy_wiltshire.dir/DependInfo.cmake"
+  "CMakeFiles/cholessy_wiltshire_object.dir/DependInfo.cmake"
   "msgs/CMakeFiles/cholessy_wiltshire_physics_msgs_creator.dir/DependInfo.cmake"
   )

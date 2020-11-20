@@ -10,7 +10,7 @@ add_definitions(-std=c++17)
 find_package( Boost  COMPONENTS system REQUIRED )
 
 ######################################################################## Gazebo
-find_package(gazebo REQUIRED)
+find_package(gazebo 9 REQUIRED)
 include_directories(${GAZEBO_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}/include)
 
@@ -44,3 +44,8 @@ add_library(cholessy_wiltshire SHARED cholessy_wiltshire.cc )
 target_link_libraries(cholessy_wiltshire ${GAZEBO_LIBRARIES})
 
 ################################################[Physics Plugin] Link an Compile
+include_directories(include)
+add_library(cholessy_wiltshire_object SHARED CholessyWiltshirePlugin.cc
+                                             src/State.cc)
+target_link_libraries(cholessy_wiltshire_object ${GAZEBO_LIBRARIES}
+                                                                                             ${3DTLIB_LIBRARY})

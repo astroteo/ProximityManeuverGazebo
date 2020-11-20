@@ -5,11 +5,13 @@
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include "gazebo/transport/transport.hh"
+#include "CholessyWiltshirePlugin.hh"
 
 using namespace gazebo;
 
-GZ_REGISTER_MODEL_PLUGIN(CholessyWiltshirePlugin)
 
+namespace gazebo
+{
 /////////////////////////////////////////////////
 CholessyWiltshirePlugin::CholessyWiltshirePlugin()
 {
@@ -37,13 +39,13 @@ void CholessyWiltshirePlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr /*
   // Subscribe to Hydra updates by registering OnHydra() callback.
   this->node = transport::NodePtr(new transport::Node());
   this->node->Init(this->world->Name());
-  this->hydraSub = this->node->Subscribe("~/cholessy_wiltshire",
-                                         &CholessyWiltshirePlugin::OnCholessyWiltshire, this);
+  this->CholessyWiltshireSub = this->node->Subscribe("~/cholessy_wiltshire",
+                                                    &CholessyWiltshirePlugin::OnCholessyWiltshire, this);
 
   // Listen to the update event. This event is broadcast every
   // simulation iteration.
   this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-      std::bind(&HydraDemoPlugin::Update, this));
+      std::bind(&CholessyWiltshirePlugin::Update, this));
 }
 
 /////////////////////////////////////////////////
@@ -54,8 +56,11 @@ void CholessyWiltshirePlugin::Update()
   // Move the model.
   this->model->SetLinearVel(
                               ignition::math::Vector3d( 0.2, 0.2, 0));
-                              
+
 
   // Remove the message that has been processed.
   this->cholessyWiltshireMsgPtr.reset();
+}
+
+GZ_REGISTER_MODEL_PLUGIN(CholessyWiltshirePlugin)
 }

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/teo-ssd/Documents/ProximityManeuverGazebo/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,6 +124,19 @@ cholessy_wiltshire/fast:
 .PHONY : cholessy_wiltshire/fast
 
 #=============================================================================
+# Target rules for targets named cholessy_wiltshire_object
+
+# Build rule for target.
+cholessy_wiltshire_object: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cholessy_wiltshire_object
+.PHONY : cholessy_wiltshire_object
+
+# fast build rule for target.
+cholessy_wiltshire_object/fast:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/build
+.PHONY : cholessy_wiltshire_object/fast
+
+#=============================================================================
 # Target rules for targets named cholessy_wiltshire_physics_msgs_creator
 
 # Build rule for target.
@@ -135,6 +148,33 @@ cholessy_wiltshire_physics_msgs_creator: cmake_check_build_system
 cholessy_wiltshire_physics_msgs_creator/fast:
 	$(MAKE) -f msgs/CMakeFiles/cholessy_wiltshire_physics_msgs_creator.dir/build.make msgs/CMakeFiles/cholessy_wiltshire_physics_msgs_creator.dir/build
 .PHONY : cholessy_wiltshire_physics_msgs_creator/fast
+
+CholessyWiltshirePlugin.o: CholessyWiltshirePlugin.cc.o
+
+.PHONY : CholessyWiltshirePlugin.o
+
+# target to build an object file
+CholessyWiltshirePlugin.cc.o:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/CholessyWiltshirePlugin.cc.o
+.PHONY : CholessyWiltshirePlugin.cc.o
+
+CholessyWiltshirePlugin.i: CholessyWiltshirePlugin.cc.i
+
+.PHONY : CholessyWiltshirePlugin.i
+
+# target to preprocess a source file
+CholessyWiltshirePlugin.cc.i:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/CholessyWiltshirePlugin.cc.i
+.PHONY : CholessyWiltshirePlugin.cc.i
+
+CholessyWiltshirePlugin.s: CholessyWiltshirePlugin.cc.s
+
+.PHONY : CholessyWiltshirePlugin.s
+
+# target to generate assembly for a file
+CholessyWiltshirePlugin.cc.s:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/CholessyWiltshirePlugin.cc.s
+.PHONY : CholessyWiltshirePlugin.cc.s
 
 cholessy_wiltshire.o: cholessy_wiltshire.cc.o
 
@@ -163,19 +203,53 @@ cholessy_wiltshire.cc.s:
 	$(MAKE) -f CMakeFiles/cholessy_wiltshire.dir/build.make CMakeFiles/cholessy_wiltshire.dir/cholessy_wiltshire.cc.s
 .PHONY : cholessy_wiltshire.cc.s
 
+src/State.o: src/State.cc.o
+
+.PHONY : src/State.o
+
+# target to build an object file
+src/State.cc.o:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/src/State.cc.o
+.PHONY : src/State.cc.o
+
+src/State.i: src/State.cc.i
+
+.PHONY : src/State.i
+
+# target to preprocess a source file
+src/State.cc.i:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/src/State.cc.i
+.PHONY : src/State.cc.i
+
+src/State.s: src/State.cc.s
+
+.PHONY : src/State.s
+
+# target to generate assembly for a file
+src/State.cc.s:
+	$(MAKE) -f CMakeFiles/cholessy_wiltshire_object.dir/build.make CMakeFiles/cholessy_wiltshire_object.dir/src/State.cc.s
+.PHONY : src/State.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... cholessy_wiltshire"
 	@echo "... rebuild_cache"
+	@echo "... cholessy_wiltshire"
+	@echo "... edit_cache"
+	@echo "... cholessy_wiltshire_object"
 	@echo "... cholessy_wiltshire_physics_msgs_creator"
+	@echo "... CholessyWiltshirePlugin.o"
+	@echo "... CholessyWiltshirePlugin.i"
+	@echo "... CholessyWiltshirePlugin.s"
 	@echo "... cholessy_wiltshire.o"
 	@echo "... cholessy_wiltshire.i"
 	@echo "... cholessy_wiltshire.s"
+	@echo "... src/State.o"
+	@echo "... src/State.i"
+	@echo "... src/State.s"
 .PHONY : help
 
 
